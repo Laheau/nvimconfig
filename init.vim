@@ -12,6 +12,6 @@ set foldmarker={{{,}}}
 "set path+=**
 "}}}
 
-"{{{ Import config.lua (NeoVim pluggins and stuff)
+"e(){{{ Import config.lua (NeoVim pluggins and stuff)
 lua require('config')
 "}}}

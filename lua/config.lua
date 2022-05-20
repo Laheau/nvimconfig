@@ -19,7 +19,11 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
-vim.call('plug#end')--}}}
+-- Tmux
+Plug 'christoomey/vim-tmux-navigator'
+
+vim.call('plug#end')
+--}}}
 
 -- Requires {{{
 require("nvim-lsp-installer").setup {}
@@ -53,7 +57,8 @@ require'nvim-treesitter.configs'.setup {
   indent = {
 	enable = true,
   }
-}--}}}
+}
+--}}}
 
 -- LSP --{{{
 -- Mappings.
@@ -168,4 +173,5 @@ end--}}}
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities
-  }--}}}
+  }
+  --}}}
