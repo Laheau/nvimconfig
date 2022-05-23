@@ -19,6 +19,11 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+-- Snippets
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'honza/vim-snippets'
+
 -- Tmux
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -109,6 +114,19 @@ end--}}}
  local cmp = require'cmp'
 
   cmp.setup({
+      snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+       completion = cmp.config.window.bordered(),
+       documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -131,10 +149,10 @@ end--}}}
       end,
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
+      -- { name = 'nvim_lsp' },
       -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
+       { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
@@ -175,3 +193,9 @@ end--}}}
     capabilities = capabilities
   }
   --}}}
+
+-- UltiSnips{{{
+vim.g['UltiSnipsJumpForwardTrigger']='<c-j>'
+vim.g['UltiSnipsJumpBackwardTrigger']='<c-k>'
+vim.g['UltiSnipsExpandTrigger']='<c-space>'
+-- }}}
