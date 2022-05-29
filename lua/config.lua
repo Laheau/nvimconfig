@@ -132,7 +132,7 @@ end--}}}
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<c-space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	['<Tab>'] = function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -195,7 +195,7 @@ end--}}}
   --}}}
 
 -- UltiSnips{{{
-vim.g['UltiSnipsJumpForwardTrigger']='<c-j>'
-vim.g['UltiSnipsJumpBackwardTrigger']='<c-k>'
-vim.g['UltiSnipsExpandTrigger']='<c-space>'
+-- vim.g['UltiSnipsJumpForwardTrigger']='<c-j>'
+-- vim.g['UltiSnipsJumpBackwardTrigger']='<c-k>'
+-- vim.g['UltiSnipsExpandTrigger']='<c-space>'
 -- }}}
