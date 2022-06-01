@@ -27,6 +27,10 @@ Plug 'honza/vim-snippets'
 -- Tmux
 Plug 'christoomey/vim-tmux-navigator'
 
+-- fzf
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 vim.call('plug#end')
 --}}}
 
@@ -111,6 +115,8 @@ for _, lsp in pairs(servers) do
 end--}}}
 
 -- Completion{{{
+ vim.o.completeopt="menuone,noinsert,noselect"
+
  local cmp = require'cmp'
 
   cmp.setup({
@@ -132,7 +138,7 @@ end--}}}
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<c-space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	['<Tab>'] = function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -197,5 +203,5 @@ end--}}}
 -- UltiSnips{{{
 -- vim.g['UltiSnipsJumpForwardTrigger']='<c-j>'
 -- vim.g['UltiSnipsJumpBackwardTrigger']='<c-k>'
--- vim.g['UltiSnipsExpandTrigger']='<c-space>'
+-- vim.g['UltiSnipsExpandTrigger']='<CR>'
 -- }}}
